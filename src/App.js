@@ -6,7 +6,7 @@ import './App.css';
 import { ThemeProvider } from 'styled-components';
 import {themes} from "./themes";
 
-function App() {
+const App = () => {
   const [theme, setTheme] = useState("light");
 
   const toggleTheme = () => {
@@ -16,7 +16,7 @@ function App() {
   return (
     <ThemeProvider theme={themes[theme]}>
         <Header setTheme={toggleTheme}/>
-        <Main theme={theme}></Main>
+        <Main />
     </ThemeProvider>
   );
 }

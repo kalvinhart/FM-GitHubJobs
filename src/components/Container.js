@@ -1,8 +1,8 @@
-import styled from "styled-components";
+import styled from "styled-components/macro";
 
 const StyledContainer = styled.div`
     width: 90%;
-    max-width: 1200px;
+    max-width: 1110px;
     margin: 0 auto;
 `;
 

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import "./ThemeToggle.css";
 
 const StyledDiv = styled.div`
@@ -13,7 +13,7 @@ const ThemeToggle = (props) => {
         <StyledDiv>
             <img src="assets/desktop/icon-sun.svg" alt =""/>
             <label class="switch">
-                <input className="togglerInput" type="checkbox" onClick={props.setTheme} />
+                <input className="togglerInput" type="checkbox" onClick={props.setTheme} tabIndex="0" />
                 <span class="slider round"></span>
             </label>
             <img src="assets/desktop/icon-moon.svg" alt =""/>
