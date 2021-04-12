@@ -1,4 +1,4 @@
-import styled from "styled-components/macro";
+import styled from "styled-components";
 
 const StyledContainer = styled.div`
     width: 90%;

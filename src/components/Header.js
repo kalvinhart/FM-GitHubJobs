@@ -1,4 +1,4 @@
-import styled from "styled-components/macro";
+import styled from "styled-components";
 import Container from "./Container";
 import ThemeToggle from "./ThemeToggle";
 
