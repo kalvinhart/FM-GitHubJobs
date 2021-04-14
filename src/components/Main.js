@@ -20,13 +20,13 @@ const Overlay = styled.div`
     background-color: rgba(0, 0, 0, 0.4);
 `;
 
-const Main = (props) => {
+const Main = ({isLoading, results, setResults}) => {
     return (
         <StyledMain>
             <Container>
                 <Overlay/>
                 <SearchBar/>
-                <Results data={props.data}/>
+                <Results isLoading={isLoading} results={results} setResults={setResults}/>
             </Container>
         </StyledMain>
     );

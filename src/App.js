@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react";
+import {useState, useEffect, useRef} from "react";
 import Header from "./components/Header";
 import Main from "./components/Main";
 import API_URL from "./axios/config";
@@ -11,7 +11,7 @@ import axios from "axios";
 const App = () => {
   const [theme, setTheme] = useState("light");
   const [isLoading, setIsLoading] = useState(true);
-  const [data, setData] = useState([]);
+  const [results, setResults] = useState({data: [], numResults: 10, selectedData: []});
 
   const toggleTheme = () => {
     theme === "light" ? setTheme("dark") : setTheme("light");
@@ -22,16 +22,16 @@ const App = () => {
   }
 
   const getData = async (position = {}) => {
-    console.log(position);
     const {latitude, longitude} = position.coords || "";
-  
     const url = latitude && longitude ? `${API_URL}?lat=${latitude}&long=${longitude}` : API_URL;
-    console.log(url);
+    
     try {
       const response = await axios.get(url);
-      setData(response.data);
+      let initialSelectedData = response.data;
+      initialSelectedData = initialSelectedData.slice(0, results.numResults);
+      setResults({...results, data: response.data, selectedData: initialSelectedData});
       setIsLoading(false);
-      console.log(data);
+      console.log(results.data);
     } catch (err) {
       console.log(err);
     }
@@ -44,7 +44,7 @@ const App = () => {
   return (
     <ThemeProvider theme={themes[theme]}>
         <Header setTheme={toggleTheme}/>
-        <Main isLoading={isLoading} data={data}/>
+        <Main isLoading={isLoading} results={results} setResults={setResults}/>
     </ThemeProvider>
   );
 }
