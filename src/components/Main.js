@@ -2,6 +2,8 @@ import styled from "styled-components";
 import Container from "./Container";
 import SearchBar from "./SearchBar";
 import Results from "./Results";
+import JobView from "./job/JobView";
+import {Route, Switch, Redirect} from "react-router-dom";
 
 const StyledMain = styled.main`
     min-height: calc(100vh - 136px);
@@ -9,25 +11,29 @@ const StyledMain = styled.main`
     transition: all .3s ease;
 `;
 
-const Overlay = styled.div`
-    display: none;
-    position: fixed;
-    z-index: 99;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 100vw;
-    background-color: rgba(0, 0, 0, 0.4);
-`;
-
 const Main = ({isLoading, results, setResults}) => {
+    const {selectedData} = results;
+
     return (
         <StyledMain>
-            <Container>
-                <Overlay/>
-                <SearchBar/>
-                <Results isLoading={isLoading} results={results} setResults={setResults}/>
-            </Container>
+            <Switch>
+                <Route exact path="/">
+                    <Container>
+                        <SearchBar/>
+                        <Results isLoading={isLoading} results={results} setResults={setResults}/>
+                    </Container>
+                </Route>
+                {selectedData.length > 0 ?
+                    <Route exact path="/job/:id" render={(routeProps) => {
+                        return (
+                            <Container>
+                                <JobView {...routeProps} details={selectedData} />
+                            </Container>
+                        ); 
+                        }} /> :
+                    <Redirect to="/" />
+                }
+            </Switch>
         </StyledMain>
     );
 

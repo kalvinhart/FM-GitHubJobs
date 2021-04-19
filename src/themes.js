@@ -17,9 +17,9 @@ const darkTheme = {
     titleColor: "#FFFFFF",
     inputText: "#FFFFFF",
     filterIcon: "#FFFFFF",
-    button2Bg: "#FFFFFF",
-    button2Color: "#19202D",
-    button2Hover: "#6E8098"
+    button2Bg: "#6E8098",
+    button2Color: "#FFFFFF",
+    button2Hover: "#9DAEC2"
 };
 
 export const themes = {

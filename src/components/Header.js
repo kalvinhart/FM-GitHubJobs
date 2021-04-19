@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Container from "./Container";
 import ThemeToggle from "./ThemeToggle";
+import {Link} from "react-router-dom";
 
 const StyledHeader = styled.header`
   width: 100%;
@@ -21,7 +22,7 @@ const Header = (props) => {
         <StyledHeader>
             <Container>
                 <FlexHeader>
-                    <img src="assets/desktop/logo.svg" alt="DevJobs Logo"></img>
+                    <Link to="/"><img src="assets/desktop/logo.svg" alt="DevJobs Logo" /></Link>
                     <ThemeToggle setTheme={props.setTheme}/>
                 </FlexHeader>
             </Container>

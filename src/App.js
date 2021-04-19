@@ -1,4 +1,4 @@
-import {useState, useEffect, useRef} from "react";
+import {useState, useEffect} from "react";
 import Header from "./components/Header";
 import Main from "./components/Main";
 import API_URL from "./axios/config";
@@ -31,7 +31,6 @@ const App = () => {
       initialSelectedData = initialSelectedData.slice(0, results.numResults);
       setResults({...results, data: response.data, selectedData: initialSelectedData});
       setIsLoading(false);
-      console.log(results.data);
     } catch (err) {
       console.log(err);
     }
