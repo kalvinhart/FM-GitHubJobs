@@ -1,5 +1,21 @@
 # Frontend Mentor - GitHub Jobs API
 
+## What is this?
+
+This project is a Frontend Mentor challenge to create an application to view all current live jobs from the GitHub Jobs API.
+
+Built using React, I used this project to practice using functional components and hooks as my previous React apps had focused on class-based components. 
+
+Other dependencies used:
+
+- React Router
+- Styled Components
+- Axios
+
+Initially my plan was to create the full app as per the Figma design provided by Frontend Mentor, however I discovered that the GitHub Jobs API was being shut down in August 2021. As a result of this, I only completed the mobile version of this web app as there is a chance that by the time anyone reads this, the application no longer works as intended. Even if this is the case, I still enjoyed this project and it certainly helped me with some of the concepts of React Router. This was also my first time using Styled Components which I really liked, so I will definitely look to use them again in the next project.
+
+I had also planned to make some improvements to the app over time, as I am not happy with the overall user experience based on the specifications from Frontend Mentor. Specifically, I feel the user should be able to manually search for jobs rather than the search to be based on the users current location only. I'd also add some small quality of life changes, like a Back button when you are viewing a job description. The app also limits the user to 50 returned results. I would have added pagination to make this a limitless number of results returned.
+
 ![Design preview for the GitHub Jobs API coding challenge](./preview.jpg)
 
 ## Welcome! 👋
