@@ -21,22 +21,21 @@ const App = () => {
     theme === "light" ? setTheme("dark") : setTheme("light");
   }
   
-  const getData = async (position = {}) => {
-    const {latitude, longitude} = position.coords || "";
-    const url = latitude && longitude ? `${API_URL}?lat=${latitude}&long=${longitude}` : API_URL;
-    
-    try {
-      const response = await axios.get(url);
-      let initialSelectedData = response.data;
-      initialSelectedData = initialSelectedData.slice(0, results.numResults);
-      setResults({...results, data: response.data, filtered: false, selectedData: initialSelectedData});
-      setIsLoading(false);
-    } catch (err) {
-      console.log(err);
-    }
-  }
-  
   useEffect(() => {
+    const getData = async (position = {}) => {
+      const {latitude, longitude} = position.coords || "";
+      const url = latitude && longitude ? `${API_URL}?lat=${latitude}&long=${longitude}` : API_URL;
+      
+      try {
+        const response = await axios.get(url);
+        let initialSelectedData = response.data;
+        initialSelectedData = initialSelectedData.slice(0, results.numResults);
+        setResults({...results, data: response.data, filtered: false, selectedData: initialSelectedData});
+        setIsLoading(false);
+      } catch (err) {
+        console.log(err);
+      }
+    }
     const getUserLocation = () => {
       navigator.geolocation.getCurrentPosition(getData, getData);
     }
