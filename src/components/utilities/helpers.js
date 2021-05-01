@@ -26,5 +26,5 @@ export const trimTitle = (title) => {
 }
 
 export const goToURL = (url) => {
-    const newWindow = window.open(url, "_blank");
+    window.open(url, "_blank");
 }

@@ -12,8 +12,6 @@ const SearchForm = ({results, setResults}) => {
         location: "",
         fullTime: false
     });
-    
-    const [showFilter, setShowFilter] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -49,7 +47,7 @@ const SearchForm = ({results, setResults}) => {
                     onChange={(e) => setInputs({...inputs, searchTerm: e.target.value})}
                     placeholder="Filter by title..."
                 />
-                <FilterButton onClick={() => setShowFilter(prevState => !prevState)}/>
+                <FilterButton />
                 <StyledSearchButtonMobile
                     type="submit"
                 >
