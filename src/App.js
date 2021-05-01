@@ -20,11 +20,7 @@ const App = () => {
   const toggleTheme = () => {
     theme === "light" ? setTheme("dark") : setTheme("light");
   }
-
-  const getUserLocation = () => {
-    navigator.geolocation.getCurrentPosition(getData, getData);
-  }
-
+  
   const getData = async (position = {}) => {
     const {latitude, longitude} = position.coords || "";
     const url = latitude && longitude ? `${API_URL}?lat=${latitude}&long=${longitude}` : API_URL;
@@ -39,8 +35,11 @@ const App = () => {
       console.log(err);
     }
   }
-
+  
   useEffect(() => {
+    const getUserLocation = () => {
+      navigator.geolocation.getCurrentPosition(getData, getData);
+    }
     getUserLocation();
   }, []);
 
