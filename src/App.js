@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react";
+import {useState, useEffect, useCallback} from "react";
 import Header from "./components/layout/Header";
 import {Overlay, Message} from "./components/styles/SearchStyles";
 import {Text} from "./components/styles/Typography";
@@ -14,9 +14,9 @@ import axios from "axios";
 const App = () => {
   const [theme, setTheme] = useState("light");
   const [isLoading, setIsLoading] = useState(true);
-  const [results, setResults] = useState({data: [], numResults: 10, selectedData: []});
   const [showMessage, setShowMessage] = useState(true);
-
+  const [results, setResults] = useState({data: [], numResults: 10, selectedData: []});
+  
   const toggleTheme = () => {
     theme === "light" ? setTheme("dark") : setTheme("light");
   }
@@ -38,9 +38,12 @@ const App = () => {
     }
     const getUserLocation = () => {
       navigator.geolocation.getCurrentPosition(getData, getData);
+    };
+
+    if (results.data.length < 1) {
+      getUserLocation();
     }
-    getUserLocation();
-  }, []);
+  }, [results]);
 
   return (
     <ThemeProvider theme={themes[theme]}>
